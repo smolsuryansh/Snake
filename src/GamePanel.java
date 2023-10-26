@@ -3,6 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.Random;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 
@@ -25,15 +29,23 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean running = false;
     Timer timer;
     Random random;
+    BufferedImage appleImage;
 
 
     GamePanel(){
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-        this.setBackground(Color.black);
+        this.setBackground(new Color(48, 52, 50));
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
         startGame();
+
+
+        try {
+            appleImage = ImageIO.read(new File("C:\\Users\\cuteb\\OneDrive\\Pictures\\aaple\\apple bhai.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -46,6 +58,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     public void restartGame(){
         running = false;
+        timer.stop();
         bodyParts = 5;
         applesEaten = 0;
         direction = 'R';
@@ -67,20 +80,22 @@ public class GamePanel extends JPanel implements ActionListener {
         if(running) {
 
 
-            for (int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
-                g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, 600);
-                g.drawLine(0, i * UNIT_SIZE, 600, i * UNIT_SIZE);
-            }
+//            for (int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
+//                g.setColor(new Color(90,90,90));
+//                g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, 600);
+//                g.drawLine(0, i * UNIT_SIZE, 600, i * UNIT_SIZE);
+//            }
 
-            g.setColor(Color.red);
-            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+            if (appleImage != null) {
+                g.drawImage(appleImage, appleX, appleY, UNIT_SIZE, UNIT_SIZE, this);
+            }
 
             for (int i = 0; i < bodyParts; i++) {
                 if (i == 0) {
-                    g.setColor(Color.green);
+                    g.setColor(new Color(67, 171, 101));
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 } else {
-                    g.setColor(new Color(45, 180, 0));
+                    g.setColor(new Color(58, 148, 88));
 //                    g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
