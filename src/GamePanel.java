@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class GamePanel extends JPanel implements ActionListener {
 
+    // Assigning values
     static final int SCREEN_WIDTH = 600;
     static final int SCREEN_HEIGHT = 600;
     static final int UNIT_SIZE = 25;
@@ -32,6 +33,7 @@ public class GamePanel extends JPanel implements ActionListener {
     BufferedImage appleImage;
 
 
+    // Creating game ui
     GamePanel(){
         random = new Random();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
@@ -41,6 +43,7 @@ public class GamePanel extends JPanel implements ActionListener {
         startGame();
 
 
+        // Creating an apple using an image
         try {
             appleImage = ImageIO.read(new File("C:\\Users\\cuteb\\OneDrive\\Pictures\\aaple\\apple bhai.png"));
         } catch (IOException e) {
@@ -49,6 +52,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     }
 
+    // To start game
     public void startGame(){
         newApple();
         running = true;
@@ -56,6 +60,7 @@ public class GamePanel extends JPanel implements ActionListener {
         timer.start();
     }
 
+    // To restart game
     public void restartGame(){
         running = false;
         timer.stop();
@@ -70,6 +75,7 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
+    // Graphics
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         draw(g);
@@ -110,11 +116,13 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
+    // Apples spawning at random
     public void newApple(){
         appleX = random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE;
         appleY = random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE;
     }
 
+    // Directions
     public void move(){
 
         for(int i= bodyParts; i>0; i--){
@@ -142,6 +150,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     }
 
+    // Creating interactive apples
     public void checkApple(){
         if((x[0] == appleX) && (y[0] == appleY)) {
             bodyParts++;
@@ -150,6 +159,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
+    // Collisions
     public void checkCollisions(){
         // Checks head collision with body
         for(int i = bodyParts; i>0; i--){
@@ -179,6 +189,7 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
+    // Graphics
     public void gameOver (Graphics g){
         // SCORE
         g.setColor(Color.white);
@@ -197,6 +208,7 @@ public class GamePanel extends JPanel implements ActionListener {
         g.drawString("Press SPACE to restart", (SCREEN_WIDTH - metrics3.stringWidth("Press SPACE to restart"))/2, 350);
     }
 
+    // Continue running
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -208,6 +220,7 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
+    // Keys 
     public class MyKeyAdapter extends KeyAdapter {
 
         private boolean isSpaceKeyPressed = false;

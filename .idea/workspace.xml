@@ -11,8 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2f20d462-80de-4765-99c2-5428845fb397" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snek.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snek.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Snek.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
