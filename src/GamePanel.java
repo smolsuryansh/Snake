@@ -220,7 +220,7 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    // Keys 
+    // Keys
     public class MyKeyAdapter extends KeyAdapter {
 
         private boolean isSpaceKeyPressed = false;
