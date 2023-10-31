@@ -15,10 +15,10 @@
   <manifest></manifest>
   <icon>C:\Users\cuteb\Downloads\image_2023-10-25_223728118.ico</icon>
   <jre>
-    <path>%JAVA_HOME%;%PATH%</path>
-    <requiresJdk>true</requiresJdk>
-    <requires64Bit>true</requires64Bit>
-    <minVersion>1.4.0</minVersion>
+    <path>C:\Program Files\Java\jdk-20</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
     <maxVersion></maxVersion>
   </jre>
 </launch4jConfig>
