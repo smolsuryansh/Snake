@@ -31,6 +31,9 @@ public class GamePanel extends JPanel implements ActionListener {
     Timer timer;
     Random random;
     BufferedImage appleImage;
+    boolean showLevelMessage10 = false; // Display message at certain level
+    boolean showLevelMessage20 = false; // Display message at certain level
+    Timer messageTimer; // Display message at a certain level
 
 
     // Creating game ui
@@ -79,7 +82,21 @@ public class GamePanel extends JPanel implements ActionListener {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         draw(g);
+        // Display a message at a certain score
+        if (showLevelMessage10) {
+            g.setColor(new Color(97, 97, 97));
+            g.setFont(new Font("Dialogue", Font.BOLD, 40));
+            FontMetrics metrics = getFontMetrics(g.getFont());
+            g.drawString("Level 10", (SCREEN_WIDTH - metrics.stringWidth("Level 10")) / 2, SCREEN_HEIGHT / 2);
+        }
+        if (showLevelMessage20) {
+            g.setColor(new Color(97, 97, 97));
+            g.setFont(new Font("Dialogue", Font.BOLD, 40));
+            FontMetrics metrics = getFontMetrics(g.getFont());
+            g.drawString("Level 20!", (SCREEN_WIDTH - metrics.stringWidth("Level 20!")) / 2, SCREEN_HEIGHT / 2);
+        }
     }
+
 
     public void draw(Graphics g){
 
@@ -102,7 +119,7 @@ public class GamePanel extends JPanel implements ActionListener {
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 } else {
                     g.setColor(new Color(58, 148, 88));
-//                    g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+//                    g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255))); // Colorful body
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
@@ -155,6 +172,29 @@ public class GamePanel extends JPanel implements ActionListener {
         if((x[0] == appleX) && (y[0] == appleY)) {
             bodyParts++;
             applesEaten++;
+            // Display a message after a certain level
+            if (applesEaten == 10) {
+                showLevelMessage10 = true;
+                Timer messageTimer = new Timer(2000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        showLevelMessage10 = false;
+                    }
+                });
+                messageTimer.setRepeats(false);
+                messageTimer.start();
+            }
+            if (applesEaten == 20) {
+                showLevelMessage20 = true;
+                Timer messageTimer = new Timer(2000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        showLevelMessage20 = false;
+                    }
+                });
+                messageTimer.setRepeats(false);
+                messageTimer.start();
+            }
             newApple();
         }
     }
