@@ -16,9 +16,9 @@
   <icon>C:\Users\cuteb\IdeaProjects\Snake\SnekLogo.ico</icon>
   <jre>
     <path>jre</path>
-    <requiresJdk>true</requiresJdk>
+    <requiresJdk>false</requiresJdk>
     <requires64Bit>false</requires64Bit>
-    <minVersion>1.4.0</minVersion>
+    <minVersion></minVersion>
     <maxVersion></maxVersion>
   </jre>
 </launch4jConfig>
