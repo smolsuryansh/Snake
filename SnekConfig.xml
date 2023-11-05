@@ -15,10 +15,10 @@
   <manifest></manifest>
   <icon>C:\Users\cuteb\IdeaProjects\Snake\SnekLogo.ico</icon>
   <jre>
-    <path>jre</path>
-    <requiresJdk>false</requiresJdk>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
     <requires64Bit>false</requires64Bit>
-    <minVersion></minVersion>
+    <minVersion>1.4.0</minVersion>
     <maxVersion></maxVersion>
   </jre>
 </launch4jConfig>
