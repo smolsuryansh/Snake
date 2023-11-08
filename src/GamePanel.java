@@ -33,6 +33,8 @@ public class GamePanel extends JPanel implements ActionListener {
     BufferedImage appleImage;
     boolean showLevelMessage10 = false; // Display message at certain level
     boolean showLevelMessage20 = false; // Display message at certain level
+    boolean showLevelMessage50 = false; // Display message at certain level
+    boolean showLevelMessage100 = false; // Display message at certain level
     Timer messageTimer; // Display message at a certain level
 
 
@@ -90,10 +92,22 @@ public class GamePanel extends JPanel implements ActionListener {
             g.drawString("Level 10", (SCREEN_WIDTH - metrics.stringWidth("Level 10")) / 2, SCREEN_HEIGHT / 2);
         }
         if (showLevelMessage20) {
-            g.setColor(new Color(97, 97, 97));
+            g.setColor(new Color(11, 196, 251));
             g.setFont(new Font("Dialogue", Font.BOLD, 40));
             FontMetrics metrics = getFontMetrics(g.getFont());
             g.drawString("Level 20!", (SCREEN_WIDTH - metrics.stringWidth("Level 20!")) / 2, SCREEN_HEIGHT / 2);
+        }
+        if (showLevelMessage50) {
+            g.setColor(new Color(221, 0, 255));
+            g.setFont(new Font("Dialogue", Font.BOLD, 40));
+            FontMetrics metrics = getFontMetrics(g.getFont());
+            g.drawString("Level 50!, DAMN!!!", (SCREEN_WIDTH - metrics.stringWidth("Level 20!, DAMN!!!")) / 2, SCREEN_HEIGHT / 2);
+        }
+        if (showLevelMessage100) {
+            g.setColor(new Color(255, 98, 0));
+            g.setFont(new Font("Dialogue", Font.BOLD, 40));
+            FontMetrics metrics = getFontMetrics(g.getFont());
+            g.drawString("UNSTOPPABLE!", (SCREEN_WIDTH - metrics.stringWidth("UNSTOPPABLE!")) / 2, SCREEN_HEIGHT / 2);
         }
     }
 
@@ -115,10 +129,10 @@ public class GamePanel extends JPanel implements ActionListener {
 
             for (int i = 0; i < bodyParts; i++) {
                 if (i == 0) {
-                    g.setColor(new Color(67, 171, 101));
+                    g.setColor(new Color(66, 222, 116));
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 } else {
-                    g.setColor(new Color(58, 148, 88));
+                    g.setColor(new Color(50, 148, 80));
 //                    g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255))); // Colorful body
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
@@ -185,6 +199,28 @@ public class GamePanel extends JPanel implements ActionListener {
                 messageTimer.start();
             }
             if (applesEaten == 20) {
+                showLevelMessage20 = true;
+                Timer messageTimer = new Timer(2000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        showLevelMessage20 = false;
+                    }
+                });
+                messageTimer.setRepeats(false);
+                messageTimer.start();
+            }
+            if (applesEaten == 50) {
+                showLevelMessage20 = true;
+                Timer messageTimer = new Timer(2000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        showLevelMessage20 = false;
+                    }
+                });
+                messageTimer.setRepeats(false);
+                messageTimer.start();
+            }
+            if (applesEaten == 100) {
                 showLevelMessage20 = true;
                 Timer messageTimer = new Timer(2000, new ActionListener() {
                     @Override

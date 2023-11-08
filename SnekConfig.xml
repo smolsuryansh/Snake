@@ -13,7 +13,7 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>C:\Users\cuteb\IdeaProjects\Snake\SnekLogo.ico</icon>
+  <icon>C:\Users\cuteb\IdeaProjects\Snake\SnekLogoICO.ico</icon>
   <jre>
     <path>%JAVA_HOME%;%PATH%</path>
     <requiresJdk>true</requiresJdk>
